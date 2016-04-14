@@ -122,27 +122,27 @@
 		
 		<div class="displays right">
 			<div class="display-container">
-				<div class="h1">Letzter Wurf</div>
+				<div class="h1">Last Throw</div>
 				<div class="display">
 					<div class="digits digits-red" ng-model="lastThrow">{{lastThrow | s: 'pad':[3, '0']}}</div>
 				</div>
 			</div>
 			<div class="display-container">
-				<div class="h1">Summe</div>
+				<div class="h1">Sum</div>
 				<div class="display">
 					<div class="digits digits-green" ng-model="sumThrows">{{sumThrows | s: 'pad':[3, '0']}}</div>
 				</div>
 			</div>
 			<div class="display-container">
-				<div class="h1">Hilfe</div>
+				<div class="h1">Help</div>
 				<div class="display" id="help-display">
 					<div class="digits digits-blue muted" ng-model="helpThrow">{{helpThrow | s: 'pad':[3, '0']}}</div>
 				</div>
 			</div>
 		</div>
 		
-		<button class="btn btn-primary" id="next-player-button" ng-click="nextPlayer()">Nächster</button>
-		<button class="btn btn-warning" id="restart-game-button" onclick="if(confirm('Wirklich neustarten?')) location.reload()">Neustart</button>
+		<button class="btn btn-primary" id="next-player-button" ng-click="nextPlayer()">Next Player</button>
+		<button class="btn btn-warning" id="restart-game-button" onclick="if(confirm('Wirklich neustarten?')) location.reload()">Restart Game</button>
 		
 		<script>
 			var app = angular.module('dartboardApp', ['underscore.string']);
