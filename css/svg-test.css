@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'Digital';
+  src: url("../fonts/digital-7.mono.ttf"); }
+* {
+  box-sizing: border-box;
+  font-size: 28px; }
+
+html {
+  min-height: 100%; }
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 28px; }
+
+.svg-container {
+  width: calc(100vw - 520px);
+  float: left;
+  text-align: center; }
+
+.svg-container svg {
+  height: calc(100vh - 3px); }
+
+.displays {
+  padding: 20px; }
+
+.displays.left {
+  float: left; }
+
+.displays.right {
+  float: right; }
+
+.display-container {
+  margin-bottom: 40px;
+  font-family: 'Digital', sans-serif; }
+
+.display-container:last-of-type {
+  margin-bottom: 0; }
+
+.display {
+  width: 200px;
+  height: 100px;
+  border: 3px solid #eee;
+  box-shadow: 0 0 5px 1px #000;
+  border-radius: 3px;
+  background: black;
+  text-align: center; }
+
+.digits {
+  font-family: 'Digital', sans-serif;
+  font-size: 96px;
+  white-space: pre; }
+
+.digits.digits-red {
+  color: #d00; }
+
+.digits.digits-green {
+  color: #00ac1c; }
+
+.digits.digits-blue {
+  color: #00b6f2; }
+
+.digits.digits-white {
+  color: #ccc; }
+
+.digits.muted {
+  color: #444; }
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: bold; }
+
+.h1 {
+  font-size: 36px;
+  padding-bottom: 11px; }
+
+.h2 {
+  font-size: 28px;
+  padding-bottom: 10px; }
+
+.h3 {
+  font-size: 24px;
+  padding-bottom: 9px; }
+
+.h4 {
+  font-size: 20px;
+  padding-bottom: 8px; }
+
+.h5 {
+  font-size: 18px;
+  padding-bottom: 7px; }
+
+.h6 {
+  padding-bottom: 6px; }
+
+.clr-input {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 10px 15px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2) inset; }
+
+.btn {
+  width: 200px;
+  height: 50px;
+  padding: 7px 15px;
+  margin-right: 20px;
+  float: right;
+  font-size: 24px;
+  text-transform: uppercase;
+  border: 1px solid #999;
+  border-radius: 3px;
+  cursor: pointer; }
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: .5; }
+
+.btn-default {
+  background-color: #ccc; }
+
+.btn-primary {
+  background-color: #39f;
+  color: #fff; }
+
+.btn-warning {
+  background-color: #ff6700;
+  color: #fff; }
+
+.displays input {
+  width: 200px; }
+
+.player-selection {
+  margin-bottom: 40px; }
+
+.display-container input {
+  margin-bottom: 8px; }
+
+#dartboard #areas g path,
+#dartboard #areas g circle {
+  cursor: pointer; }
+
+#dartboard.disabled #areas g path,
+#dartboard.disabled #areas g circle {
+  opacity: 0.5;
+  cursor: not-allowed; }
+
+#restart-game-button {
+  position: absolute;
+  bottom: 20px;
+  right: 0px; }
+
+/*# sourceMappingURL=svg-test.css.map */
