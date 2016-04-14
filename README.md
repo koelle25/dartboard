@@ -3,7 +3,7 @@ Simple Web-Application based on Angular.js for a digital dartboard
 **Note: Ready to "play" (clicking on the fields)**
 
 ## Demo
-Go to the demo page [here](https://github.com/Koelli91/dartboard/gh-pages)
+Go to the demo page [here](https://koelli91.github.io/dartboard/)
 
 ## Resources
 - SVG Dartboard by [Djave.co.uk](http://djave.co.uk/free-svg-dartboard/)
