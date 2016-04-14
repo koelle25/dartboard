@@ -1,6 +1,7 @@
 # Dartboard
 Simple Web-Application based on Angular.js for a digital dartboard
-**Note: Ready to "play" (clicking on the fields)**
+
+*Note: Ready to "play" (clicking on the fields)*
 
 ## Demo
 Go to the demo page [here](https://koelli91.github.io/dartboard/)
