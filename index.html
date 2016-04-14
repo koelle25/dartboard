@@ -17,27 +17,9 @@
 			<div class="display-container" ng-repeat="player in players">
 				<div class="h1">{{player.name}}</div>
 				<div class="display">
-					<div class="digits digits-red" ng-class="{muted: !player.active}">{{player.punkte | s: 'pad':[3, '0']}}</div>
+					<div class="digits digits-red" ng-class="{muted: !player.active}">{{player.score | s: 'pad':[3, '0']}}</div>
 				</div>
 			</div>
-			<!--<div class="display-container">
-				<div class="h1">Kai</div>
-				<div class="display">
-					<div class="digits digits-red muted">096</div>
-				</div>
-			</div>
-			<div class="display-container">
-				<div class="h1">Dominik</div>
-				<div class="display">
-					<div class="digits digits-red muted">112</div>
-				</div>
-			</div>
-			<div class="display-container">
-				<div class="h1">Christian</div>
-				<div class="display">
-					<div class="digits digits-red muted">084</div>
-				</div>
-			</div>-->
 		</div>
 		
 		<div class="svg-container">
@@ -142,7 +124,7 @@
 		</div>
 		
 		<button class="btn btn-primary" id="next-player-button" ng-click="nextPlayer()">Next Player</button>
-		<button class="btn btn-warning" id="restart-game-button" onclick="if(confirm('Wirklich neustarten?')) location.reload()">Restart Game</button>
+		<button class="btn btn-warning" id="restart-game-button" onclick="if(confirm('Really?')) location.reload()">Restart Game</button>
 		
 		<script>
 			var app = angular.module('dartboardApp', ['underscore.string']);
@@ -154,26 +136,26 @@
 				$scope.activePlayer = 0;
 				$scope.startValue = 301;
 				$scope.players = [
-					{ name: 'Player 1', punkte: $scope.startValue, oldscore: $scope.startValue, active: true },
-					{ name: 'Player 2', punkte: $scope.startValue, oldscore: $scope.startValue, active: false },
-					{ name: 'Player 3', punkte: $scope.startValue, oldscore: $scope.startValue, active: false }
-					/*{ name: 'Player 4', punkte: $scope.startValue, oldscore: $scope.startValue, active: false }*/
+					{ name: 'Player 1', score: $scope.startValue, oldscore: $scope.startValue, active: true },
+					{ name: 'Player 2', score: $scope.startValue, oldscore: $scope.startValue, active: false },
+					{ name: 'Player 3', score: $scope.startValue, oldscore: $scope.startValue, active: false }
+					{ name: 'Player 4', score: $scope.startValue, oldscore: $scope.startValue, active: false }
 				];
 				$scope.minus = function(i, mult) {
 					if ($scope.numThrows < 3) {
-						if ($scope.numThrows == 0) $scope.players[$scope.activePlayer].oldscore = $scope.players[$scope.activePlayer].punkte;
+						if ($scope.numThrows == 0) $scope.players[$scope.activePlayer].oldscore = $scope.players[$scope.activePlayer].score;
 						
-						if ($scope.players[$scope.activePlayer].punkte - i*mult >= 0) $scope.players[$scope.activePlayer].punkte -= i*mult;
+						if ($scope.players[$scope.activePlayer].score - i*mult >= 0) $scope.players[$scope.activePlayer].score -= i*mult;
 						else {
-							$scope.players[$scope.activePlayer].punkte = $scope.players[$scope.activePlayer].oldscore;
+							$scope.players[$scope.activePlayer].score = $scope.players[$scope.activePlayer].oldscore;
 							$scope.sumThrows = 0;
 							$scope.numThrows = 3;
 						}
 						
-						if ($scope.players[$scope.activePlayer].punkte == 0) {
+						if ($scope.players[$scope.activePlayer].score == 0) {
 							angular.element("#dartboard").addClass("disabled");
 							angular.element("#next-player-button").attr("disabled", true);
-							$scope.players[$scope.activePlayer].punkte = 'WON';
+							$scope.players[$scope.activePlayer].score = 'WIN';
 						}
 						
 						if (mult == 2) $scope.lastThrow = "D" + (i<10 ? "0" + i : i);
@@ -202,49 +184,49 @@
 					$scope.helpThrows();
 				}
 				$scope.helpThrows = function() {
-					var punkte = $scope.players[$scope.activePlayer].punkte;
-					if (punkte <= 180) {
+					var score = $scope.players[$scope.activePlayer].score;
+					if (score <= 180) {
 						angular.element("#help-display div").removeClass("muted");
-						if (punkte >= 60) $scope.helpThrow = 'T20';
-						else if (punkte >= 57) $scope.helpThrow = 'T19';
-						else if (punkte >= 54) $scope.helpThrow = 'T18';
-						else if (punkte >= 51) $scope.helpThrow = 'T17';
-						else if (punkte == 50) $scope.helpThrow = 'D25';
-						else if (punkte >= 48) $scope.helpThrow = 'T16';
-						else if (punkte >= 45) $scope.helpThrow = 'T15';
-						else if (punkte >= 42) $scope.helpThrow = 'T14';
-						else if (punkte >= 40) $scope.helpThrow = 'D20';
-						else if (punkte == 39) $scope.helpThrow = 'T13';
-						else if (punkte >= 38) $scope.helpThrow = 'D19';
-						else if (punkte >= 36) $scope.helpThrow = 'D18';
-						else if (punkte >= 34) $scope.helpThrow = 'D17';
-						else if (punkte >= 32) $scope.helpThrow = 'D16';
-						else if (punkte >= 30) $scope.helpThrow = 'D15';
-						else if (punkte >= 28) $scope.helpThrow = 'D14';
-						else if (punkte >= 26) $scope.helpThrow = 'D13';
-						else if (punkte == 25) $scope.helpThrow = '025';
-						else if (punkte >= 24) $scope.helpThrow = 'D12';
-						else if (punkte >= 22) $scope.helpThrow = 'D11';
-						else if (punkte >= 20) $scope.helpThrow = '020';
-						else if (punkte == 19) $scope.helpThrow = '019';
-						else if (punkte == 18) $scope.helpThrow = '018';
-						else if (punkte == 17) $scope.helpThrow = '017';
-						else if (punkte == 16) $scope.helpThrow = '016';
-						else if (punkte == 15) $scope.helpThrow = '015';
-						else if (punkte == 14) $scope.helpThrow = '014';
-						else if (punkte == 13) $scope.helpThrow = '013';
-						else if (punkte == 12) $scope.helpThrow = '012';
-						else if (punkte == 11) $scope.helpThrow = '011';
-						else if (punkte == 10) $scope.helpThrow = '010';
-						else if (punkte == 9) $scope.helpThrow = '009';
-						else if (punkte == 8) $scope.helpThrow = '008';
-						else if (punkte == 7) $scope.helpThrow = '007';
-						else if (punkte == 6) $scope.helpThrow = '006';
-						else if (punkte == 5) $scope.helpThrow = '005';
-						else if (punkte == 4) $scope.helpThrow = '004';
-						else if (punkte == 3) $scope.helpThrow = '003';
-						else if (punkte == 2) $scope.helpThrow = '002';
-						else if (punkte == 1) $scope.helpThrow = '001';
+						if (score >= 60) $scope.helpThrow = 'T20';
+						else if (score >= 57) $scope.helpThrow = 'T19';
+						else if (score >= 54) $scope.helpThrow = 'T18';
+						else if (score >= 51) $scope.helpThrow = 'T17';
+						else if (score == 50) $scope.helpThrow = 'D25';
+						else if (score >= 48) $scope.helpThrow = 'T16';
+						else if (score >= 45) $scope.helpThrow = 'T15';
+						else if (score >= 42) $scope.helpThrow = 'T14';
+						else if (score >= 40) $scope.helpThrow = 'D20';
+						else if (score == 39) $scope.helpThrow = 'T13';
+						else if (score >= 38) $scope.helpThrow = 'D19';
+						else if (score >= 36) $scope.helpThrow = 'D18';
+						else if (score >= 34) $scope.helpThrow = 'D17';
+						else if (score >= 32) $scope.helpThrow = 'D16';
+						else if (score >= 30) $scope.helpThrow = 'D15';
+						else if (score >= 28) $scope.helpThrow = 'D14';
+						else if (score >= 26) $scope.helpThrow = 'D13';
+						else if (score == 25) $scope.helpThrow = '025';
+						else if (score >= 24) $scope.helpThrow = 'D12';
+						else if (score >= 22) $scope.helpThrow = 'D11';
+						else if (score >= 20) $scope.helpThrow = '020';
+						else if (score == 19) $scope.helpThrow = '019';
+						else if (score == 18) $scope.helpThrow = '018';
+						else if (score == 17) $scope.helpThrow = '017';
+						else if (score == 16) $scope.helpThrow = '016';
+						else if (score == 15) $scope.helpThrow = '015';
+						else if (score == 14) $scope.helpThrow = '014';
+						else if (score == 13) $scope.helpThrow = '013';
+						else if (score == 12) $scope.helpThrow = '012';
+						else if (score == 11) $scope.helpThrow = '011';
+						else if (score == 10) $scope.helpThrow = '010';
+						else if (score == 9) $scope.helpThrow = '009';
+						else if (score == 8) $scope.helpThrow = '008';
+						else if (score == 7) $scope.helpThrow = '007';
+						else if (score == 6) $scope.helpThrow = '006';
+						else if (score == 5) $scope.helpThrow = '005';
+						else if (score == 4) $scope.helpThrow = '004';
+						else if (score == 3) $scope.helpThrow = '003';
+						else if (score == 2) $scope.helpThrow = '002';
+						else if (score == 1) $scope.helpThrow = '001';
 						else $scope.helpThrow = '---';
 					} else {
 						angular.element("#help-display div").addClass("muted");
