@@ -154,10 +154,10 @@
 				$scope.activePlayer = 0;
 				$scope.startValue = 301;
 				$scope.players = [
-					{ name: 'Player 1', punkte: startValue, oldscore: startValue, active: true },
-					{ name: 'Player 2', punkte: startValue, oldscore: startValue, active: false },
-					{ name: 'Player 3', punkte: startValue, oldscore: startValue, active: false }
-					/*{ name: 'Player 4', punkte: startValue, oldscore: startValue, active: false }*/
+					{ name: 'Player 1', punkte: $scope.startValue, oldscore: $scope.startValue, active: true },
+					{ name: 'Player 2', punkte: $scope.startValue, oldscore: $scope.startValue, active: false },
+					{ name: 'Player 3', punkte: $scope.startValue, oldscore: $scope.startValue, active: false }
+					/*{ name: 'Player 4', punkte: $scope.startValue, oldscore: $scope.startValue, active: false }*/
 				];
 				$scope.minus = function(i, mult) {
 					if ($scope.numThrows < 3) {
